@@ -1,0 +1,78 @@
+<div class="row h-100" style="width: 100.9%; max-height: 94.5%; background-color: rgba(244, 244, 250, 0.1)" >
+    <div class="col-lg-3 contenedor">
+
+  <form class="example-form row" id="contenedor" [formGroup]="user" (ngSubmit)="ingresar()">
+    
+      <div class="example-container col-md-7">
+          
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Introduce tu email" [formControl]="email" [formControl]="email" formControlName="email" required>
+           <mat-error *ngIf="email.invalid">{{getErrorMessageMail()}}</mat-error>
+        </mat-form-field>
+        
+
+        <mat-form-field>
+            <input matInput placeholder="Nombre" [formControl]="name" formControlName="name">
+        </mat-form-field>
+        
+
+          <mat-form-field>
+              <input matInput placeholder="Primer apellido" [formControl]="secondname" formControlName="secondname">
+          </mat-form-field>
+        
+
+          <mat-form-field>
+                <input matInput placeholder="Segundo apellido" [formControl]="surname" formControlName="surname">
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-select placeholder="Sexo" formControlName="gender">
+              <mat-option value="Femenino">Femenino</mat-option>
+              <mat-option value="Masculino">Masculino</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="Introduce tu password" [type]="hide ? 'password' : 'text'" [formControl]="password" formControlName="password"  required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Confirma tu password" [type]="hide ? 'password' : 'text'" [formControl]="password1" formControlName="password1"  required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="password1.invalid">{{getErrorMessagePassword1()}}</mat-error>
+            </mat-form-field>
+
+            <div class="form-group" *ngIf="user['errors']?.sonIguales && !user.pristine">
+                    <p class="text-danger">
+                        Las contraseñas deben ser iguales
+                    </p>
+                </div>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="date" formControlName="date" >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+             </mat-form-field>
+
+      
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary col-md-7" style="top:10px"  [disabled]="user.invalid">Registrarse</button>
+    </form>
+
+</div>
+<div class="col-lg-9 imagen" >
+
+    
+
+</div>
+
+</div>

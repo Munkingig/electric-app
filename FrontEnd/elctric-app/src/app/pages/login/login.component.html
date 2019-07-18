@@ -1,0 +1,33 @@
+  <div class="row h-100" style="width: 101%; max-height: 94.3%; background-color: rgba(244, 244, 250, 0.1)" >
+    <div class="col-lg-3 contenedor">
+
+        <form class="example-form row"  id="contenedor" [formGroup]="user" (ngSubmit)="ingresar()">
+
+            <mat-form-field class="example-full-width col-md-7">
+                  <input matInput placeholder="Introduce tu email" [formControl]="email" formControlName="email" required>
+                  <mat-error *ngIf="email.invalid">{{getErrorMessageMail()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width col-md-7">
+                  <input matInput placeholder="Introduce tu password" [type]="hide ? 'password' : 'text'" [formControl]="password"  formControlName="password" required>
+                  <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
+            </mat-form-field>
+
+            <div class="example-full-width col-md-7">
+                  <mat-checkbox>Recordar</mat-checkbox>
+            </div>
+
+            <a href="#" class="stretched-link example-full-width col-md-7">Olvidaste la contraseña?</a>
+
+            <button type="submit" class="btn btn-outline-primary col-md-7" style="top:10px" [disabled]="user.invalid">Entrar</button>
+
+        </form>
+     
+    </div>
+
+    <div class="col-lg-9 imagen" ></div>
+
+  </div>
